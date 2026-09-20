@@ -31,4 +31,4 @@ RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=la
 RUN php artisan migrate --force && php artisan db:seed --force
 EXPOSE 8000
 ENTRYPOINT ["php", "artisan", "octane:start"]
-CMD ["--server=roadrunner", "--workers=5","--host=0.0.0.0", "--port=8000"]
+CMD ["--server=roadrunner", "--workers=3","--host=0.0.0.0", "--port=8000"]
