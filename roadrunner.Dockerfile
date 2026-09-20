@@ -20,9 +20,8 @@ ENV NPM_ALLOW_SUPERUSER 1
 ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 
-RUN chmod -R 777 . && composer require "php:^8.1 || ^8.2 || ^8.3" --no-update \ 
-&& composer install --no-interaction --ignore-platform-reqs
-RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http spiral/roadrunner --no-interaction 
+RUN chmod -R 777 . && composer install --no-interaction --ignore-platform-reqs
+RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http spiral/roadrunner --no-update --no-interaction 
 RUN ./vendor/bin/rr get-binary --quiet \
     && chmod +x rr \
     && mv rr /usr/local/bin/rr 
