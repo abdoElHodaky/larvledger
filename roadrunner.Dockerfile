@@ -23,7 +23,7 @@ ENV OCTANE_SERVER roadrunner
 RUN chmod -R 777 . && composer install --no-interaction --no-scripts --no-autoloader
 &&\
 composer require laravel/octane spiral/roadrunner-cli && npm install 
-RUN yes | php artisan octane:install --server=roadrunner
+RUN php artisan octane:install --server=roadrunner --no-interaction
 RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr
 RUN npm run build && php artisan storage:link
 #RUN wget https://github.com/roadrunner-server/roadrunner/releases/download/v2.12.0/roadrunner-2.12.0-linux-amd64.tar.gz \
