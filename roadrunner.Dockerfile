@@ -20,7 +20,8 @@ ENV NPX_ALLOW_SUPERUSER 1
 ENV OCTANE_SERVER roadrunner
 #RUN echo 'pm.max_children = 15' >> /usr/local/etc/php-fpm.d/zz-docker.conf && \
 #echo 'pm.max_requests = 500' >> /usr/local/etc/php-fpm.d/zz-docker.conf
-RUN chmod -R 777 . && composer install &&\
+RUN chmod -R 777 . && composer install --no-interaction --no-scripts --no-autoloader
+&&\
 composer require laravel/octane spiral/roadrunner-cli && npm install 
 RUN yes | php artisan octane:install --server=roadrunner
 RUN ./vendor/bin/rr get-binary --quiet && chmod +x rr && mv rr /usr/local/bin/rr
