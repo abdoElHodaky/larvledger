@@ -28,7 +28,7 @@ RUN php artisan octane:install --server=roadrunner --no-interaction
 
 
 RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
-
+RUN php artisan migrate:refresh --seed
 EXPOSE 8000
 ENTRYPOINT ["php", "artisan", "octane:start"]
 CMD ["--server=roadrunner", "--workers=5","--host=0.0.0.0", "--port=8000"]
