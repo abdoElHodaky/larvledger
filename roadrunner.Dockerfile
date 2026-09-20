@@ -24,7 +24,12 @@ FROM base AS builder
 
 # 1. Cache PHP dependencies
 COPY composer.json composer.lock* /var/www/html/
-RUN composer install --ignore-platform-req=php --ignore-platform-reqs --no-check-platform --no-interaction --no-scripts --no-autoloader
+RUN composer install \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist \
+    --ignore-platform-req=php
 
 # 2. Cache Node dependencies
 COPY package.json package-lock.json* /var/www/html/
