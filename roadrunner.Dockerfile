@@ -2,7 +2,7 @@
 FROM shinsenter/roadrunner:php8.2-alpine
 RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-RUN docker-php-ext-install bcmath 
+#RUN docker-php-ext-install bcmath 
 COPY . /var/www/html
 WORKDIR /var/www/html
 
@@ -32,6 +32,6 @@ RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http
 
 #RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
-EXPOSE ${ROADRUNNER_PORT} 
+EXPOSE 8000
 #ENTRYPOINT ["php", "artisan", "octane:start"]
 #CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
