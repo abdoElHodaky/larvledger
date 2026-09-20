@@ -20,16 +20,15 @@ ENV NPM_ALLOW_SUPERUSER 1
 ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 
-RUN chmod -R 777 . && composer install --no-interaction --ignore-platform-reqs
-RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http spiral/roadrunner --no-interaction --no-update
- 
+RUN chmod -R 777 . && composer install --ignore-platform-reqs
+RUN npm install 
 RUN yes| php artisan octane:install --server=roadrunner 
    # && sed -i 's/version: "2.7"/version: "3.0"/g' .rr.yaml \
    # && sed -i 's/version: "2"/version: "3.0"/g' .rr.yaml
 
 
-#RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
+RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
 EXPOSE 8000
-#ENTRYPOINT ["php", "artisan", "octane:start"]
-#CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
+ENTRYPOINT ["php", "artisan", "octane:start"]
+CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
