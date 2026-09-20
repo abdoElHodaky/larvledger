@@ -8,11 +8,16 @@
         "php": ">=8.1 <8.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
+        "laravel/octane": "^2.4",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.3",
         "livewire/livewire": "^3.4",
-        "spatie/laravel-permission": "^6.3"
+        "spatie/laravel-permission": "^6.3",
+        "spiral/roadrunner": "^2025.1",
+        "spiral/roadrunner-cli": "^2.6",
+        "spiral/roadrunner-http": "^4.1",
+        "symfony/polyfill-php83": "^1.41"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
