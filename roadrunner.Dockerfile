@@ -33,5 +33,5 @@ RUN php artisan octane:install --server=roadrunner --no-interaction
 #RUN php artisan livewire:publish --assets && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
 EXPOSE 8000
-ENTRYPOINT ["php", "artisan", "octane:start"]
-CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
+#ENTRYPOINT ["php", "artisan", "octane:start"]
+#CMD ["--server=roadrunner", "--workers=5","--max-requests=1450","--host=0.0.0.0", "--port=8000"]
