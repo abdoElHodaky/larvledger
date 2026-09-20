@@ -23,7 +23,7 @@ ENV NPX_ALLOW_SUPERUSER 1
 RUN chmod -R 777 . && composer install --no-interaction --ignore-platform-reqs
 RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http spiral/roadrunner --no-interaction --no-update
  
-RUN php artisan octane:install --server=roadrunner --no-interaction 
+RUN yes| php artisan octane:install --server=roadrunner 
    # && sed -i 's/version: "2.7"/version: "3.0"/g' .rr.yaml \
    # && sed -i 's/version: "2"/version: "3.0"/g' .rr.yaml
 
