@@ -1,5 +1,5 @@
-#FROM spacetabio/roadrunner-alpine:8.1-base-1.11.0
-FROM shinsenter/roadrunner:php8.1-alpine
+#FROM spacetabio/roadrunner-alpine:8.2-base-1.11.0
+FROM shinsenter/roadrunner:php8.2-alpine
 RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 #RUN docker-php-ext-install bcmath 
@@ -20,7 +20,7 @@ ENV NPM_ALLOW_SUPERUSER 1
 ENV YARN_ALLOW_SUPERUSER 1
 ENV NPX_ALLOW_SUPERUSER 1
 
-RUN chmod -R 777 . && composer install --no-interaction --ignore-platform-reqs   && npm i
+RUN chmod -R 777 . && composer install --no-interaction --ignore-platform-reqs --no-update  && npm i
 RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http spiral/roadrunner --no-interaction \
     && ./vendor/bin/rr get-binary --quiet \
     && chmod +x rr \
