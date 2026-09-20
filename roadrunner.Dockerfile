@@ -41,9 +41,7 @@ RUN composer require laravel/octane spiral/roadrunner-cli spiral/roadrunner-http
 
 # 5. Optimize Autoloader & Publish Assets
 RUN composer dump-autoload --optimize \
-    && php artisan octane:install --server=roadrunner --no-interaction \
-   # && php artisan livewire:publish --assets \
-   # && php artisan vendor:publish --tag=laravel-assets --ansi --force
+    && php artisan octane:install --server=roadrunner --no-interaction 
 
 # 6. Clean up temporary NPM/build caches to minimize layer size
 RUN rm -rf node_modules ~/.npm ~/.composer
@@ -68,7 +66,7 @@ ENV APP_KEY=base64:B6l/H5fSpR60Y+MpcKP22Z1B4Us7adD+jJrln8XOcpQ= \
     APP_URL=http://localhost \
     ROADRUNNER_PORT=8000
 
-EXPOSE ${ROADRUNNER_PORT}
+EXPOSE 8000
 
 ENTRYPOINT ["php", "artisan", "octane:start"]
 CMD ["--server=roadrunner", "--workers=5", "--max-requests=1450", "--host=0.0.0.0", "--port=8000"]
