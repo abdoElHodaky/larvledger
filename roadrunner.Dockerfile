@@ -1,7 +1,7 @@
 # ==========================================
 # STAGE 1: Shared Base Environment
 # ==========================================
-FROM spacetabio/roadrunner-alpine:8.1-base-1.11.0 AS base
+FROM spacetabio/roadrunner-alpine:8.2-base-1.11.0 AS base
 
 # Install system dependencies and PHP extensions ONCE
 RUN apk add -U --no-cache nghttp2-dev nodejs npm unzip tzdata
